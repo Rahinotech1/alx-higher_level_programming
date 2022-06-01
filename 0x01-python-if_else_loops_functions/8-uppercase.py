@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-#!/usr/bin/env python3
-uppercase = __import__('8-uppercase').uppercase
-
-uppercase("holberton")
-uppercase("Holberton School 98 Battery street")
+def uppercase(str):
+    for i in str:
+        if ord(i) > 96:
+            i = chr(ord(i) - 32)
+            print('{:s}'.format(i), end='')
+            print('')
