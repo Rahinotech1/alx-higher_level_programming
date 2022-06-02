@@ -4,8 +4,8 @@ if __name__ == "__main__":
     count = len(sys.argv)
     if count == 1:
         print("0 argument.")
-    elif count == 2:
-        print("1 argument:")
+        if count == 2:
+            print("1 argument:")
     else:
         print("{:d} arguments:".format(count - 1))
         for i in range(1, count):
