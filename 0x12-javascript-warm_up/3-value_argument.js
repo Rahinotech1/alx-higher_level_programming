@@ -1,5 +1,5 @@
 #!/usr/bin/node
-'use strict';
+const process = require('process');
 let arg = process.argv[2];
 if (arg === undefined) {
   console.log('No argument');
