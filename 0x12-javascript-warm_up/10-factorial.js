@@ -8,4 +8,4 @@ function factorial (x) {
     return (x * factorial(x - 1));
   }
 }
-console.log(factorial(parseInt(x)));
+console.log(factorial(parseInt(const)));
