@@ -1,11 +1,17 @@
 #!/usr/bin/node
-'use strict';
-let const = process.argv[2];
-function factorial (const) {
-  if (isNaN(const) || const === 1) {
-    return (1);
+const process = require('process');
+
+function factorialize (num) {
+  if (isNaN(num)) {
+    return 1;
+  }
+  if (num < 0) {
+    return -1;
+  } else if (num === 0) {
+    return 1;
   } else {
-    return (const * factorial(const- 1));
+    return (num * factorialize(num - 1));
   }
 }
-console.log(factorial(parseInt(const)));
+
+console.log(factorialize(parseInt(process.argv[2])));
