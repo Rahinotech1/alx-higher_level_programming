@@ -1,11 +1,11 @@
 #!/usr/bin/node
 'use strict';
-let x = process.argv[2];
-function factorial (x) {
-  if (isNaN(x) || x === 1) {
+let const = process.argv[2];
+function factorial (const) {
+  if (isNaN(const) || const === 1) {
     return (1);
   } else {
-    return (x * factorial(x - 1));
+    return (const * factorial(const- 1));
   }
 }
 console.log(factorial(parseInt(const)));
