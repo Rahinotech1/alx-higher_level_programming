@@ -1,12 +1,15 @@
 #!/usr/bin/node
-'use strict';
-let a = process.argv[2];
-let b = process.argv[3];
-function add (a, b) {
-  if (isNaN(a) || isNaN(b)) {
-    return (NaN);
-  } else {
-    return (parseInt(a) + parseInt(b));
+const process = require('process');
+let resp;
+let num;
+let num2;
+resp = 'NaN';
+
+if (process.argv.length > 3) {
+  num = parseInt(process.argv[2]);
+  num2 = parseInt(process.argv[3]);
+  if (!isNaN(num) && !isNaN(num2)) {
+    resp = String((num + num2));
   }
 }
-console.log(add(a, b));
+console.log(resp);
