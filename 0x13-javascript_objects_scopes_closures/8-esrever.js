@@ -1,9 +1,8 @@
 #!/usr/bin/node
 exports.esrever = function (list) {
-  let newList = [];
-  let i;
-  for (i = list.length - 1; i >= 0; i--) {
-    newList.push(list[i]);
+  let rev = [];
+  for (let i = 0; i < list.length; i++) {
+    rev.unshift(list[i]);
   }
-  return newList;
+  return rev;
 };
