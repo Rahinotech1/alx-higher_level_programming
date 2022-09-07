@@ -1,9 +1,7 @@
 #!/usr/bin/node
-exports.converter = function converter (base) {
-  if (typeof converter.Num === 'undefined') {
-    converter.Num = base;
-    return converter;
-  } else {
-    return parseInt(converter.Num, base);
+exports.converter = function (base) {
+  function conv (number) {
+    return number.toString(base);
   }
+  return conv;
 };
