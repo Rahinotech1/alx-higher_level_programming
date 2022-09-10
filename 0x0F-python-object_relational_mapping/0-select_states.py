@@ -1,22 +1,31 @@
 #!/usr/bin/python3
-"""script for use in getting all states from sql db
-"""
+"""Script that lists all states from database hbtn_0e_0_usa"""
 import MySQLdb
 import sys
 
-if __name__ == '__main__':
-    args = sys.argv
-    if len(args) < 4:
-        print("Usage: {} username password database_name".format(args[0]))
-        exit(1)
-    username = args[1]
-    password = args[2]
-    data = args[3]
-    db = MySQLdb.connect(host='localhost', user=username,
-                         passwd=password, db=data,
-                         port=3306)
+
+def get_states():
+    """Takes arguments argv to list from database
+    Arguments:
+        argv[1]: mysql username
+        argv[2]: mysql password
+        argv[3]: database name
+    """
+    db = MySQLdb.connect(host="localhost",
+                         port=3306,
+                         user=sys.argv[1],
+                         passwd=sys.argv[2],
+                         db=sys.argv[3])
+
     cur = db.cursor()
-    num_rows = cur.execute("SELECT * FROM states ORDER BY states.id")
+
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
     rows = cur.fetchall()
-    for row in rows:
-        print(row)
+    for i in rows:
+        print(i)
+
+    cur.close()
+    db.close()
+
+if __name__ == "__main__":
+    get_states()
