@@ -1,11 +1,17 @@
 #!/usr/bin/python3
+<<<<<<< HEAD
 """ takes in a URL,sends a request to the URL and displays the value of 
 the X-Request-Id variable found in the header of the response."""
 
+=======
+"""
+takes in a URL, sends a request to the URL and displays the value of the
+X-Request-Id variable found in the header of the response
+"""
+>>>>>>> refs/remotes/origin/master
 if __name__ == "__main__":
-    import urllib.request
-    import sys
-
-    with urllib.request.urlopen(sys.argv[1]) as response:
-        head = response.headers.get('X-Request-Id')
-        print(head)
+    import urllib.request as request
+    from sys import argv
+    req = request.Request(argv[1])
+    with request.urlopen(req) as r:
+        print(r.headers.get('X-Request-Id'))
