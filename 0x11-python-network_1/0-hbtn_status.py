@@ -1,14 +1,15 @@
 #!/usr/bin/python3
-"""script for testing status of web pages
-"""
-if __name__ == "__main__":
-    import urllib.request
-    url = "https://intranet.hbtn.io/status"
-    with urllib.request.urlopen(url) as response:
-        bytes_content = response.read()
-        content = bytes_content.decode('utf-8')
-        print_str = '''Body response:
-\t- type: {}
-\t- content: {}
-\t- utf8 content: {}'''.format(type(bytes_content), bytes_content, content)
-        print(print_str)
+"""Script to request content from `https://intranet.hbtn.io/status`"""
+
+import urllib.request
+import urllib.error
+
+try:
+    with urllib.request.urlopen('https://intranet.hbtn.io/status') as r:
+        body = r.read()
+        print('Body response:')
+        print('\t- type: {}'.format(type(body)))
+        print('\t- content: {}'.format(body))
+        print('\t- utf8 content: {}'.format(body.decode('utf8')))
+except urllib.error.URLError as e:
+    print(e)
