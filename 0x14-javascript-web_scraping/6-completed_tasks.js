@@ -1,19 +1,22 @@
 #!/usr/bin/node
+
 const request = require('request');
-request.get(process.argv[2], (err, resp, body) => {
-  if (err) console.log(err);
-  else if (resp.statusCode === 200) {
-    let todos = JSON.parse(body);
-    let usersCompleted = {};
-    for (let todo of todos) {
-      if (todo.completed === true) {
-        if (todo.userId in usersCompleted) {
-          usersCompleted[todo.userId] += 1;
-        } else {
-          usersCompleted[todo.userId] = 1;
-        }
+
+request(process.argv[2], function (error, response, body) {
+  if (error) {
+    console.error(error);
+  }
+  const dict = JSON.parse(body).reduce((acc, elem) => {
+    if (!acc[elem.userId]) {
+      if (elem.completed) {
+        acc[elem.userId] = 1;
+      }
+    } else {
+      if (elem.completed) {
+        acc[elem.userId] += 1;
       }
     }
-    console.log(usersCompleted);
-  }
+    return acc;
+  }, {});
+  console.log(dict);
 });
